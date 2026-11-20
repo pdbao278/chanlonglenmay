@@ -317,7 +317,7 @@ export class PlayScene extends Phaser.Scene {
     this.input.on('pointerdown', (pointer: Phaser.Input.Pointer) => {
       audioManager.unlock();
       if (this.mode !== 'playing') return;
-      if (pointer.leftButtonDown()) {
+      if (pointer.leftButtonDown() || pointer.wasTouch || pointer.isDown) {
         this.mouseWorldX = pointer.worldX;
         this.mouseWorldY = pointer.worldY;
         this.dashBufferTimer = 0.14;
@@ -399,6 +399,11 @@ export class PlayScene extends Phaser.Scene {
       }),
       eventBus.on('game:returnTitle', () => {
         this.enterTitleMode();
+      }),
+      eventBus.on('game:dash', () => {
+        audioManager.unlock();
+        if (this.mode !== 'playing') return;
+        this.dashBufferTimer = 0.14;
       }),
       eventBus.on('game:setPaused', ({ paused }) => {
         if (paused && this.mode === 'playing') {

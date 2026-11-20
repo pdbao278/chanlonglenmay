@@ -52,6 +52,7 @@ export interface EventMap {
   'game:restart': void;
   'game:returnTitle': void;
   'game:setPaused': { paused: boolean };
+  'game:dash': void;
   'xinkhuc:select': { choice: 'sacrifice' | 'refuse'; buffId?: BuffId };
   'audio:toggleMute': void;
 }

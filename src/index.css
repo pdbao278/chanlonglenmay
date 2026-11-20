@@ -19,6 +19,12 @@
     background-color: #0e0a1a;
     user-select: none;
     -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    touch-action: none;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-right: env(safe-area-inset-right, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    padding-left: env(safe-area-inset-left, 0px);
   }
 }
 
@@ -87,6 +93,45 @@
   box-shadow:
     inset 0 0 0 4px rgba(6, 214, 160, 0.65),
     inset 0 0 32px rgba(155, 93, 229, 0.35);
+}
+
+/* Virtual Mobile Action Button */
+.virtual-dash-btn {
+  background: radial-gradient(circle at 35% 30%, #e63946 0%, #b51726 70%, #6e0d19 100%);
+  border: 2.5px solid #ffb703;
+  box-shadow:
+    0 8px 24px rgba(230, 57, 70, 0.55),
+    0 0 16px rgba(255, 183, 3, 0.4),
+    inset 0 2px 4px rgba(255, 235, 160, 0.6);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.virtual-dash-btn:active {
+  transform: scale(0.92);
+  box-shadow:
+    0 2px 10px rgba(230, 57, 70, 0.7),
+    0 0 22px rgba(6, 214, 160, 0.7);
+}
+
+.virtual-dash-btn-fever {
+  background: radial-gradient(circle at 35% 30%, #06d6a0 0%, #05a37a 70%, #03523e 100%);
+  border: 2.5px solid #ffe66d;
+  box-shadow:
+    0 8px 26px rgba(6, 214, 160, 0.65),
+    0 0 24px rgba(6, 214, 160, 0.8),
+    inset 0 2px 4px rgba(255, 255, 255, 0.7);
+  animation: feverPulse 1.2s infinite alternate ease-in-out;
+}
+
+@keyframes feverPulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 14px rgba(6, 214, 160, 0.6);
+  }
+  100% {
+    transform: scale(1.06);
+    box-shadow: 0 0 28px rgba(6, 214, 160, 0.95);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
